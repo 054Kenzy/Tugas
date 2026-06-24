@@ -40,7 +40,8 @@ This project presents a multi-method statistical analysis of Indonesia's digital
 
 | Univariate Distribution | Bivariate Scatter Plot |
 |:---:|:---:|
-| ![Univariate Distribution](docs/img/01_univariate_distribution.png) | ![Bivariate Scatter](docs/img/02_bivariate_scatter.png) |
+| <img width="1139" height="490" alt="image" src="https://github.com/user-attachments/assets/2cdf4d45-6cd6-45d4-a979-c73ba0e7176e" />
+ | ![Bivariate Scatter](docs/img/02_bivariate_scatter.png) |
 | *Distribution and spread of internet access (mean: 85.95%) and poverty rate (mean: 11.33%) across 37 provinces, with mean markers and IQR-based outlier detection.* | *Poverty rate vs. internet access (r = −0.82): a strong negative trend with Papua provinces as structural outliers at the lower-right extreme.* |
 
 | OLS Regression Analysis | Chi-Square Panel |
