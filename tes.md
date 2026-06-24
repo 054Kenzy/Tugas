@@ -1,16 +1,8 @@
 <div align="center">
 
-# Digital Divide in Indonesia: Poverty and Internet Access
+# Indonesia Provincial Digital Divide Analysis
 
-### Quantifying the statistical association between provincial poverty rates and household internet access across 37 Indonesian provinces using Chi-Square testing, OLS regression, and Pearson correlation on 2024 BPS government data.
-
-<br>
-
-[![Status](https://img.shields.io/badge/status-completed-blue?style=flat-square)]()
-[![Python](https://img.shields.io/badge/python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
-[![Jupyter](https://img.shields.io/badge/jupyter-notebook-F37626?style=flat-square&logo=jupyter&logoColor=white)](notebooks/)
-[![Open in Colab](https://img.shields.io/badge/Open%20in-Colab-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)](https://colab.research.google.com/github/[username]/digital-divide-indonesia-2024/blob/main/notebooks/poverty_internet_access_indonesia_bps2024.ipynb)
-[![Last Commit](https://img.shields.io/github/last-commit/[username]/digital-divide-indonesia-2024?style=flat-square)](https://github.com/[username]/digital-divide-indonesia-2024/commits)
+### A reproducible statistical case study of the relationship between internet access and poverty across Indonesian provinces in 2024
 
 </div>
 
@@ -18,51 +10,51 @@
 
 ## 📌 Overview
 
-This project presents a multi-method statistical analysis of Indonesia's digital divide, examining whether provincial poverty rates are significantly associated with household internet access rates and how strong that relationship is. Using 2024 data from Badan Pusat Statistik (BPS), the analysis covers 37 of Indonesia's 38 provinces and applies a structured six-stage workflow: exploratory data analysis, Pearson correlation, OLS linear regression with full assumption diagnostics, Chi-Square test of independence, Fisher's Exact Test, and Cramer's V effect size estimation. The analysis is intended for data scientists, researchers, and policy analysts who want empirical, quantified evidence on the socioeconomic determinants of internet access disparity in Indonesia. Output includes nine publication-quality figures and a complete statistical summary embedded in the notebook.
+This repository contains a notebook-based statistical analysis of the relationship between provincial internet access and poverty in Indonesia in 2024. The workflow combines data cleaning, province-level merging, exploratory analysis, Pearson correlation, linear regression, chi-square testing, Fisher's exact test, and residual analysis.
+
+The project is designed as a portfolio case study for technical reviewers who want to inspect both the analytical process and the statistical evidence. The emphasis is on traceable preprocessing, quantified findings, and transparent limitations rather than on deployment.
 
 ---
 
 ## ❓ Problem Statement
 
-**Context:** Indonesia's internet penetration rate varies dramatically across provinces in 2024, ranging from 97.57% (Kepulauan Riau) to just 12.15% (Papua Pegunungan) — a gap of over 85 percentage points. Poverty rates show a comparable spread, from 4.00% (Bali) to 32.97% (Papua Pegunungan). These patterns suggest a potential structural link between economic deprivation and digital exclusion, but the statistical nature and quantified strength of this relationship had not been formally examined using current data and a rigorous multi-method approach.
+**Context:**  
+Provincial internet access and poverty rates are both publicly available in BPS statistical tables, but the raw tables do not explain whether the two variables move together, how strong the relationship is, or whether that relationship remains visible when the data is examined from both numeric and categorical perspectives.
 
-**Gap:** BPS publishes both datasets independently at the provincial level, but limited analytical work integrates them using methods that cover both parametric (Pearson r, OLS regression with assumption diagnostics) and non-parametric (Chi-Square, Fisher's Exact Test) approaches alongside effect size estimation. Without this, the "digital divide" narrative in Indonesia remains descriptive rather than statistically grounded.
+**Gap:**  
+A direct table lookup is not enough for portfolio-grade analysis. The missing layer is a reproducible statistical workflow that cleans the data, aligns the provincial units, checks data quality, and validates the association with multiple methods.
 
-**Solution:** This analysis merges both 2024 BPS datasets at the provincial level and applies a rigorous statistical workflow to quantify the direction, magnitude, and significance of the poverty-internet relationship. The results provide an evidence base for digital equity discussions, infrastructure policy prioritization, and poverty alleviation program design in Indonesia.
+**Solution:**  
+This project merges the two BPS tables at province level, cleans inconsistent entries, removes missing values, and evaluates the relationship through correlation, regression, chi-square testing, Fisher's exact test, and residual-based interpretation. The result is a compact but evidence-driven analysis of the digital divide across Indonesian provinces.
 
 ---
 
 ## 🎥 Demo & Screenshots
 
-> 📓 **Notebook:** &nbsp;[Open in Colab](https://colab.research.google.com/github/[username]/digital-divide-indonesia-2024/blob/main/notebooks/poverty_internet_access_indonesia_bps2024.ipynb) &nbsp;|&nbsp; [Render on nbviewer](https://nbviewer.org/github/[username]/digital-divide-indonesia-2024/blob/main/notebooks/poverty_internet_access_indonesia_bps2024.ipynb)
+The figures below should be exported from the notebooks and saved under `docs/img/`.
 
-<br>
-
-| Univariate Distribution | Bivariate Scatter Plot |
+| Data Audit Snapshot | Regression Fit |
 |:---:|:---:|
-| ![Univariate Distribution](docs/img/01_univariate_distribution.png) | ![Bivariate Scatter](docs/img/02_bivariate_scatter.png) |
-| *Distribution and spread of internet access (mean: 85.95%) and poverty rate (mean: 11.33%) across 37 provinces, with mean markers and IQR-based outlier detection.* | *Poverty rate vs. internet access (r = −0.82): a strong negative trend with Papua provinces as structural outliers at the lower-right extreme.* |
+| ![Data audit snapshot](docs/img/01_data_audit_snapshot.png) | ![Regression scatter](docs/img/02_regression_scatter.png) |
+| Cleaned sample, missing-value handling, and final province count. | Scatter plot with regression line, equation, and R² annotation. |
 
-| OLS Regression Analysis | Chi-Square Panel |
+| Chi-Square Diagnostics | Fisher 2×2 Summary |
 |:---:|:---:|
-| ![Regression Line](docs/img/03_regression_line.png) | ![Chi-Square Panels](docs/img/04_chisquare_panels.png) |
-| *OLS regression line (R² = 0.6748, p < 0.001) with annotated equation. Intercept exceeds 100% — a documented extrapolation artifact outside the observed data range (4.00%–32.97%).* | *Four-panel Chi-Square visualization: observed frequencies, expected frequencies, standardized residuals, and grouped bar chart. Cell [High Poverty × Low Internet] contributes 42.5% of total χ².* |
-
-> 📂 All generated figures are stored in `outputs/figures/`. Export each figure from the notebook using `plt.savefig()` before committing.
+| ![Chi-square diagnostics](docs/img/03_chi_square_diagnostics.png) | ![Fisher summary](docs/img/04_fisher_2x2_summary.png) |
+| Observed, expected, and standardized residual heatmaps. | Binary contingency table used for Fisher's exact test. |
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology | Role in Project |
+| Layer | Technology | Role in the Project |
 |:---:|:---:|---|
-| Language | Python 3.10+ | Primary language for the entire analysis pipeline |
-| Environment | Google Colab / Jupyter Notebook | Interactive execution, EDA, and inline reporting |
-| Data Processing | Pandas, NumPy | Data loading, column renaming, inner merge on province name, missing value handling, IQR outlier detection |
-| Visualization | Matplotlib, Seaborn | Nine output figures: histograms, boxplots, scatter plots, heatmaps, regression plot, diagnostic panels, GoF charts |
-| Statistical Analysis | SciPy (stats) | Pearson correlation, Chi-Square, Fisher's Exact Test, Shapiro-Wilk, Breusch-Pagan, Durbin-Watson |
-| Regression Modeling | Scikit-learn | OLS linear regression, R² scoring, residual extraction |
-| Version Control | Git + GitHub | Source control and documentation |
+| Language | Python 3 | Main language for the full analytical workflow |
+| Environment | Jupyter Notebook | Interactive analysis, validation, and reporting |
+| Data Processing | Pandas, NumPy | Cleaning, transformation, merging, and tabulation |
+| Visualization | Matplotlib, Seaborn | Distribution plots, scatter plots, heatmaps, and diagnostic charts |
+| Statistics / Modeling | SciPy, Scikit-learn | Correlation, regression, chi-square, and assumption checks |
+| Version Control | Git + GitHub | Repository management and portfolio presentation |
 
 ---
 
@@ -70,87 +62,64 @@ This project presents a multi-method statistical analysis of Indonesia's digital
 
 ### Metadata
 
-**Dataset 1 — Internet Access**
-
-| Attribute | Detail |
+| Atribut | Detail |
 |---|---|
-| **Source** | Badan Pusat Statistik (BPS) Indonesia |
-| **Link** | [Persentase Rumah Tangga yang Pernah Mengakses Internet, 2024](https://www.bps.go.id/id/statistics-table/2/Mzk4IzI=/persentase-rumah-tangga-yang-pernah-mengakses-internet-dalam-3-bulan-terakhir-menurut-provinsi-dan-klasifikasi-daerah.html) |
-| **Size** | 39 rows × 4 columns (raw); 37 provinces × 4 columns (after cleaning) |
+| **Source** | BPS provincial statistical tables |
+| **Link** | Not embedded in the notebook export |
+| **Size** | Raw: 39 × 4 and 39 × 10; Final merged dataset: 37 × 5 |
 | **Format** | CSV |
-| **License** | Public government data (BPS) |
-| **Time Coverage** | 2024 |
+| **License** | Public statistical tables; code license can be added separately |
+| **Coverage** | Indonesia, provincial level, 2024 |
+| **Accessed on** | Not recorded in the notebook export |
 
-**Dataset 2 — Poverty Rate**
+### Data Dictionary (Key Columns)
 
-| Attribute | Detail |
-|---|---|
-| **Source** | Badan Pusat Statistik (BPS) Indonesia |
-| **Link** | [Persentase Penduduk Miskin (P0) Menurut Provinsi dan Daerah, 2024](https://www.bps.go.id/id/statistics-table/2/MTkyIzI=/persentase-penduduk-miskin--p0--menurut-provinsi-dan-daerah.html) |
-| **Size** | 39 rows × 10 columns (raw); 37 provinces × 2 columns (after cleaning) |
-| **Format** | CSV |
-| **License** | Public government data (BPS) |
-| **Time Coverage** | March 2024 (Semester 1) |
-
-> Raw data files are not included in this repository. Download both CSVs directly from the BPS links above, place them in the `data/` folder, and follow the instructions in [`data/README.md`](data/README.md) before running the notebook.
-
-### Data Dictionary (Final Merged Dataset — 37 Provinces × 5 Columns)
-
-| Column | Data Type | Description | Example Values |
+| Column | Type | Description | Example Value |
 |---|:---:|---|---|
-| `Provinsi` | `str` | Province name (uppercase, 37 provinces after removing DKI Jakarta) | `"ACEH"`, `"BALI"` |
-| `Internet_Perkotaan` | `float64` | Urban household internet access rate (%) | `92.60`, `98.68` |
-| `Internet_Perdesaan` | `float64` | Rural household internet access rate (%) | `86.97`, `8.81` |
-| `Internet_Total` | `float64` | **Dependent variable (Y)** — overall internet access rate per province (%) | `88.95`, `12.15` |
-| `Kemiskinan_Persen` | `float64` | **Independent variable (X)** — poverty rate per province, March 2024 (%) | `14.23`, `4.00` |
+| `Provinsi` | `str` | Province name used as the merge key | `ACEH` |
+| `Internet_Perkotaan` | `float` | Percentage of households in urban areas that accessed the internet in the last 3 months | `92.60` |
+| `Internet_Perdesaan` | `float` | Percentage of households in rural areas that accessed the internet in the last 3 months | `86.97` |
+| `Internet_Total` | `float` | Overall provincial internet access percentage | `88.95` |
+| `Kemiskinan_Persen` | `float` | Provincial poverty rate used in the analysis | `14.23` |
+
+> The raw files should live in `data/raw/`, and the cleaned merged dataset should be saved in `data/processed/`.
 
 ---
 
 ## 📈 Results & Performance
 
-### Key Findings
+1. **The cleaned analytic dataset contains 37 provinces and 5 variables.**  
+   The original merged data had 38 provinces, but one row was removed because `Internet_Perdesaan` was missing for DKI Jakarta. This keeps the analysis internally consistent.  
 
-1. **Very strong negative correlation (r = −0.8215, p < 0.001)** — Provinces with higher poverty rates consistently show lower internet access rates. The association is statistically significant at all conventional significance levels (n = 37, two-tailed).
+2. **Poverty and internet access show a very strong negative linear association.**  
+   Pearson correlation is `r = -0.8215`, with `p-value < 0.001`, which indicates that higher poverty rates are associated with lower internet access across provinces.  
 
-2. **OLS regression explains 67.48% of variance** — The simple linear model (Ŷ = 108.16 − 1.96X) yields R² = 0.6748 (adj. R² = 0.6655, F = 72.62, p < 0.001). Each 1-percentage-point increase in poverty rate is associated with a 1.96% decrease in internet access (β₁ = −1.9603, SE = 0.2300, 95% CI: [−2.43, −1.49]).
+3. **The regression model explains a substantial portion of variation.**  
+   The fitted line is `Y = 108.1643 + (-1.9603)X`, with `R² = 0.6748` and adjusted `R² = 0.6655`. Interpreted practically, a 1% increase in poverty is associated with an estimated 1.9603% decrease in internet access in this dataset.  
 
-3. **Chi-Square independence test confirmed by Fisher's Exact Test** — The 3×3 Chi-Square test (χ² = 20.18, df = 4, p = 0.000460) was supplemented by Fisher's Exact Test (p = 0.036) as the appropriate fallback, since 77.8% of expected frequency cells fell below 5. Both tests reject H₀ at α = 0.05.
+4. **The regression is informative, but not fully clean on assumptions.**  
+   Normality of residuals passes (`Shapiro-Wilk p = 0.092351`), while homoskedasticity and no-autocorrelation checks do not (`Breusch-Pagan p = 0.000006`, `Durbin-Watson = 1.0366`). That means the model is best read as an exploratory association result, not a final causal model.  
 
-4. **Large effect size: Cramer's V = 0.5222** — Classified as "Very Strong" for a 3×3 contingency table (df = 2), fully consistent with the Pearson correlation result. Both categorical and continuous approaches converge on the same conclusion.
+5. **The categorical view confirms the same pattern.**  
+   Chi-square testing gives `χ² = 20.1823` with `p = 0.000460`, and Cramer's V is `0.5222`, which indicates a strong association. Because `77.8%` of expected frequencies are below 5, Fisher's exact test is also used and remains significant (`p = 0.035853`).  
 
-5. **No high-poverty province has high internet access** — The cell [High Poverty × High Internet Access] = 0 observed vs. 2.7 expected. This zero-cell finding indicates an absolute structural barrier: no province in the highest poverty tier achieves high internet access in the 2024 data.
-
-6. **The [High Poverty × Low Internet Access] cell drives 42.5% of total χ²** — Seven of 10 high-poverty provinces fall in the low internet access category (expected under independence: 2.4 provinces), with a standardized residual of 2.929. This single cell is the primary statistical engine behind the significant Chi-Square result.
-
-| OLS Assumption Diagnostics | Crosstab Standardized Residuals |
-|:---:|:---:|
-| ![Diagnostic Plots](docs/img/05_diagnostic_plots.png) | *[Screenshot: Standardized residuals heatmap — place `outputs/figures/04_crosstab_heatmap.png` here after exporting from notebook]* |
-| *Four-panel OLS diagnostics. Fan-shaped pattern in Residuals vs Fitted confirms heteroscedasticity. Q-Q plot shows near-normal residuals with tail deviation driven by Papua outliers.* | *3×3 heatmap with standardized residuals. Cell [Tinggi × Rendah] (res = 2.93) and cell [Tinggi × Tinggi] (res = −1.64) show the strongest deviations from independence.* |
-
-> 📂 All output figures are stored in `outputs/figures/`.
+6. **The strongest cell is the high-poverty / low-internet combination.**  
+   The category `[Tinggi × Rendah]` contributes `42.50%` of the total chi-square statistic, which makes it the clearest signal in the contingency analysis.
 
 ---
 
 ## ⚠️ Notes / Limitations
 
-- **Scope:** Cross-sectional analysis at the provincial level using a single year of data (2024). No causal claims can be made from this design. The findings describe association strength and direction only.
-
-- **Data:** DKI Jakarta was excluded due to a missing `Internet_Perdesaan` value (97.37% of data retained). The three Papua provinces — Papua Pegunungan (Internet: 12.15%, Poverty: 32.97%), Papua Tengah (36.08%, 29.76%), and Papua Selatan (65.71%, 17.44%) — are structural outliers that substantially influence correlation strength, residual variance, and effect size estimates. Their inclusion reflects real-world conditions, but a robustness check excluding these provinces is recommended.
-
-- **Statistical Assumptions:** Two of three OLS classical assumptions are violated: homoscedasticity (Breusch-Pagan p < 0.001) and no autocorrelation (Durbin-Watson = 1.04, indicating positive autocorrelation likely caused by geographic clustering of Papua provinces). Normality of residuals is satisfied (Shapiro-Wilk p = 0.092). Robust standard errors or Weighted Least Squares were not applied in this version; coefficient confidence intervals should be interpreted with caution.
-
-- **Generalizability:** Findings reflect 2024 provincial-level averages and may not generalize to sub-provincial or district-level patterns, or to years outside the study period. Multi-year panel data would be needed to assess the temporal stability of this relationship.
-
-- **Reproducibility:** The notebook uses Google Colab's `files.upload()` mechanism for data loading, which requires manual file upload at runtime. To run locally, replace the upload block with `pd.read_csv('data/[filename].csv', skiprows=n)` after downloading both BPS datasets and placing them in `data/`. Full instructions are in [`data/README.md`](data/README.md).
-
-- **Missing Variable Bias:** The model uses a single predictor. Known confounders — telecommunications infrastructure investment, geographic terrain, education levels, local government digital policy — are acknowledged but not controlled for. The remaining 32.52% unexplained variance (1 − R²) is attributed to these omitted factors.
+- **Scope:** The analysis is limited to Indonesian provinces in 2024 and should not be generalized to other years or country-level contexts without revalidation.
+- **Data:** One province was removed because of a missing rural internet value. The final dataset is still usable, but the drop should be documented clearly.
+- **Assumptions:** The linear regression is statistically useful, but its residual diagnostics are not fully clean. The model should be read as association-focused rather than causal.
+- **Categorical binning:** The chi-square and Fisher analyses require binning continuous values into categories, which reduces detail compared with the numeric analysis.
+- **External factors:** The analysis does not model infrastructure quality, urbanization, education, or policy variables, so part of the variation remains unexplained.
 
 ---
 
 <div align="center">
   <sub>
-    ⭐ If this analysis was useful, consider giving the repository a star.
-    <br>
-    Made with ❤️ by <a href="https://github.com/[username]">[Your Name]</a> · 2024
+    Made with care by Your Name · 2026
   </sub>
 </div>
