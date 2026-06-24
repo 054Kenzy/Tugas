@@ -1,113 +1,131 @@
 <div align="center">
 
-# Analisis Inferensial Kesenjangan Digital Indonesia
+# Indonesia Digital Divide Analytics
 
-**Menguji hubungan statistik antara tingkat kemiskinan dan akses internet antarprovinsi di Indonesia menggunakan pendekatan triangulasi numerik dan kategorikal.**
+### Mengidentifikasi pola kesenjangan digital regional menggunakan uji statistika komplementer untuk mengevaluasi dampak kemiskinan terhadap akses internet rumah tangga.
 
-![Status](https://img.shields.io/badge/status-completed-blue?style=flat-square)
-![Python](https://img.shields.io/badge/python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)
-![Jupyter](https://img.shields.io/badge/jupyter-notebook-F37626?style=flat-square&logo=jupyter&logoColor=white)
-![Last Commit](https://img.shields.io/github/last-commit/username/idn-digital-divide-inference?style=flat-square)
+<br>
+
+[![Status](https://img.shields.io/badge/status-completed-blue?style=flat-square)]()
+[![Python](https://img.shields.io/badge/python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![Jupyter](https://img.shields.io/badge/jupyter-notebook-F37626?style=flat-square&logo=jupyter&logoColor=white)](notebooks/)
 
 </div>
 
+---
+
 ## 📌 Overview
 
-Proyek ini merupakan analisis inferensial tingkat lanjut yang mengevaluasi hubungan antara tingkat kemiskinan dan akses internet di 37 provinsi Indonesia tahun 2024. Berfokus pada validitas statistik, analisis ini tidak hanya mengandalkan korelasi numerik, tetapi melakukan triangulasi menggunakan uji independensi kategorikal. Output utama berupa laporan diagnostik lengkap yang mencakup pemodelan regresi linear, uji asumsi klasik, hingga fallback metodologis menggunakan Fisher's Exact Test. Hasil penelitian ini ditujukan untuk analis kebijakan, peneliti sosial, dan praktisi data science yang membutuhkan bukti empiris mengenai kesenjangan digital.
+Analisis ini bertujuan untuk memetakan dan mengukur derajat kesenjangan digital (digital divide) antarprovinsi di Indonesia pada tahun 2024. Melalui integrasi data makroekonomi dan sosio-digital dari Badan Pusat Statistik (BPS), proyek ini secara spesifik meneliti bagaimana tingkat kemiskinan daerah memengaruhi batas penetrasi akses internet rumah tangga. Studi ini dirancang sebagai studi kasus teknis bagi pembuat kebijakan publik, ekonom, dan praktisi data untuk memahami hambatan struktural inklusi digital. Output akhir dari proyek ini berupa kerangka analisis statistik replikabel yang menggabungkan permodelan linear numerik OLS dan pengujian asosiasi kategorik non-parametrik.
+
+---
 
 ## ❓ Problem Statement
 
-**Konteks:** Kesenjangan digital merupakan hambatan struktural bagi pemerataan ekonomi di Indonesia. Meskipun penetrasi internet meningkat, disparitas antarwilayah masih sangat tinggi, terutama antara wilayah Jawa-Bali dengan kawasan timur Indonesia.
+**Konteks:** Transformasi digital di Indonesia berkembang pesat, namun laju penetrasinya tidak merata di seluruh wilayah kedaulatan ekonomi. Berdasarkan agregat sektoral nasional, terdapat variasi ekstrem di mana persentase rumah tangga yang mengakses internet berkisar antara 12.15% hingga 97.57%, sementara tingkat kemiskinan regional berfluktuasi dari 4.00% hingga 32.97%.
 
-**Gap:** Banyak analisis data sosial hanya berhenti pada perhitungan korelasi permukaan atau visualisasi heatmap tanpa menguji signifikansi statistik secara ketat. Pendekatan ini sering mengabaikan pelanggaran asumsi model dan risiko kesalahan interpretasi pada data agregat.
+**Gap:** Pendekatan evaluasi inklusi digital sering kali hanya melihat metrik deskriptif rata-rata tanpa menguji kekuatan hubungan struktural antar-variabel. Belum ada pembuktian kuantitatif yang menguji apakah kemiskinan bertindak sebagai pembatas mutlak dalam kepemilikan akses internet, atau sejauh mana pengelompokan wilayah miskin secara signifikan terperangkap dalam klaster isolasi digital.
 
-**Solusi:** Proyek ini menerapkan kerangka inferensial yang ketat. Analisis dimulai dari pemodelan regresi linear sederhana untuk mengukur efek numerik, dilanjutkan dengan uji asumsi klasik. Ketika asumsi Chi-Square dilanggar pada data kategorikal, analisis melakukan fallback ke Fisher's Exact Test. Pendekatan ini memastikan bahwa klaim hubungan antarvariabel didukung oleh bukti statistik yang robust, bukan sekadar kebetulan sampel.
+**Solusi:** Proyek ini menerapkan pendekatan statistik komplementer menggunakan Ordinary Least Squares (OLS) Linear Regression untuk mengukur nilai elastisitas dampak numerik, serta Uji Chi-Square dan Fisher's Exact Test untuk membedah struktur kontingensi wilayah. Analisis ini memberikan basis bukti kuantitatif untuk memprioritaskan intervensi infrastruktur digital pada area yang memiliki kontribusi deviasi tertinggi.
+
+---
 
 ## 🎥 Demo & Screenshots
 
-📓 **Notebook:** [Lihat di nbviewer](https://nbviewer.org/github/username/idn-digital-divide-inference/blob/main/notebooks/01_inferential_analysis_digital_divide.ipynb) | ![Open in Colab](https://img.shields.io/badge/Open%20in-Colab-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)
+> 📓 **Notebook:** &nbsp;[[Lihat Dokumentasi Notebook](notebooks/indonesia_digital_divide_eda.ipynb)]
 
-| Distribusi Akses Internet vs Kemiskinan | Peta Korelasi dan Regresi Linear |
-| --- | --- |
-| ![Scatter Plot](outputs/figures/scatter_regression.png) | ![Crosstab Heatmap](outputs/figures/crosstab_heatmap.png) |
-| *Hubungan negatif yang kuat antara persentase kemiskinan dan akses internet, dengan garis regresi dan interval kepercayaan.* | *Matriks kontingensi yang menunjukkan konsentrasi provinsi kemiskinan tinggi pada kategori akses internet rendah.* |
+<br>
 
-| Diagnostik Asumsi OLS | Fisher's Exact Test (Fallback) |
-| --- | --- |
-| ![Diagnostic Plots](outputs/figures/diagnostic_plots.png) | ![Fisher Exact](outputs/figures/fisher_exact_2x2.png) |
-| *Residual vs Fitted dan Q-Q Plot untuk mengevaluasi validitas asumsi homoskedastisitas dan normalitas.* | *Heatmap tabel 2x2 biner yang membuktikan tidak ada provinsi kemiskinan tinggi dengan akses internet tinggi.* |
+| Hubungan Linier Tren Kemiskinan vs Internet | Permodelan Matriks Diagnostik Residual OLS |
+|:---:|:---:|
+| [Placeholder: Tempatkan Grafik scatter_plot dengan regression_line dari docs/img/correlation_trendline.png] | [Placeholder: Tempatkan Grafik 2x2 subplot OLS_diagnostic_plots dari docs/img/OLS_diagnostic_plots.png] |
+| *Hubungan negatif yang kuat antara kemiskinan daerah dengan tingkat penetrasi internet tahun 2024.* | *Evaluasi visual untuk uji asumsi normalitas histogram, Q-Q plot, dan Scale-Location.* |
+
+<br>
+
+| Distribusi Klaster Kategori Variabel | Frekuensi Observasi vs Ekspektasi Kontingensi |
+|:---:|:---:|
+| [Placeholder: Tempatkan Grafik pie_charts distribusi kategori dari docs/img/contingency_pie_charts.png] | [Placeholder: Matriks visualisasi tabel kontingensi 2x2 atau barchart dari Fisher's Exact Test] |
+| *Proporsi pembagian klaster wilayah berdasarkan kuartil Q25 dan Q75.* | *Visualisasi kesenjangan mutlak: Nol provinsi di kategori kemiskinan tinggi yang menembus akses internet tinggi.* |
+
+---
 
 ## 🛠️ Tech Stack
 
 | Layer | Teknologi | Peran dalam Project |
-| --- | --- | --- |
-| Language | Python 3.10 | Bahasa utama untuk seluruh pipeline analisis dan inferensi |
-| Environment | Jupyter Notebook | Eksekusi interaktif, eksplorasi data, dan pelaporan |
-| Data Processing | Pandas, NumPy | Pembersihan data, merging dataset BPS, dan kategorisasi kuartil |
-| Visualization | Matplotlib, Seaborn | Visualisasi distribusi, scatter plot, heatmap, dan diagnostik residual |
-| Statistical Modeling | SciPy, Scikit-learn | Uji korelasi, regresi linear, Chi-Square, Fisher's Exact, dan uji asumsi |
+|:---:|:---:|---|
+| Language | Python 3.10 | Bahasa pemrograman utama untuk membangun seluruh pipeline pemrosesan data dan komputasi statistik. |
+| Environment | Jupyter Notebook | Media eksekusi interaktif, visualisasi terintegrasi, dan penyusunan narasi laporan analitis. |
+| Data Processing | Pandas, NumPy | Melakukan ingestion data BPS, standarisasi nama wilayah, penyelarasan baris data, dan penanganan nilai pencilan (outliers). |
+| Visualization | Matplotlib, Seaborn | Membangun visualisasi statistik formal termasuk scatter plot dengan trendline, matriks diagnosa, dan diagram distribusi. |
+| ML / Modeling | Scikit-learn, Scipy Stats | Melakukan fitting regresi linear OLS, komputasi skor R-squared, uji signifikansi F-test/t-test, serta eksekusi uji non-parametrik Chi-Square. |
+| Version Control | Git + GitHub | Melakukan pelacakan perubahan kode secara berkala dan manajemen dokumentasi artefak repositori. |
+
+---
 
 ## 📊 Dataset
 
 ### Metadata
+
 | Atribut | Detail |
-| --- | --- |
-| Sumber | Badan Pusat Statistik (BPS) Indonesia |
-| Link | [Dataset Akses Internet](https://www.bps.go.id) & [Dataset Kemiskinan](https://www.bps.go.id) |
-| Ukuran | 37 baris × 5 kolom utama (setelah cleaning) |
-| Format | CSV |
-| Cakupan Waktu | Maret 2024 (Semester 1) |
-| Diakses pada | 2024 |
+|---|---|
+| **Sumber** | Badan Pusat Statistik (BPS) Republik Indonesia |
+| **Link** | [Dataset Akses Internet 2024](https://www.bps.go.id/id/statistics-table/2/Mzk4IzI=/persentase-rumah-tangga-yang-pernah-mengakses-internet-dalam-3-bulan-terakhir-menurut-provinsi-dan-klasifikasi-daerah.html) \| [Dataset Kemiskinan P0 2024](https://www.bps.go.id/id/statistics-table/2/MTkyIzI=/persentase-penduduk-miskin--p0--menurut-provinsi-dan-daerah.htmlh) |
+| **Ukuran** | 37 baris × 5 kolom (Setelah pembersihan data pencilan dan baris agregat nasional) |
+| **Format** | CSV (Comma-Separated Values) |
+| **Lisensi** | Open Data BPS / Public Domain |
+| **Cakupan Waktu** | Tahun Kalender 2024 (Temporal Match: Internet 3 Bulan Terakhir & Kemiskinan Semester 1 Maret) |
+| **Diakses pada** | 2026-06-24 |
 
 ### Data Dictionary (Kolom Kunci)
-| Kolom | Tipe Data | Deskripsi | Contoh Nilai |
-| --- | --- | --- | --- |
-| `Provinsi` | str | Nama provinsi di Indonesia | "JAWA BARAT" |
-| `Internet_Total` | float | Persentase rumah tangga dengan akses internet | 88.95 |
-| `Kemiskinan_Persen` | float | Persentase penduduk miskin (P0) | 14.23 |
-| `Kategori_Internet` | str | Kategorisasi berbasis kuartil (Rendah, Sedang, Tinggi) | "Sedang" |
-| `Kategori_Kemiskinan` | str | Kategorisasi berbasis kuartil (Rendah, Sedang, Tinggi) | "Tinggi" |
 
-Data mentah tersimpan di `data/raw/` dan data yang telah digabungkan serta dibersihkan tersimpan di `data/processed/`.
+| Kolom | Tipe Data | Deskripsi | Contoh Nilai |
+|---|:---:|---|---|
+| `Provinsi` | `str` | Nama entitas wilayah administratif tingkat satu di Indonesia (dibersihkan dan dikonversi ke huruf kapital). | `"ACEH"`, `"SUMATERA UTARA"` |
+| `Internet_Total` | `float` | **Variabel Dependen (Y)**: Persentase total rumah tangga di provinsi tersebut yang mengakses internet. | `88.95` |
+| `Kemiskinan_Persen` | `float` | **Variabel Independen (X)**: Persentase total penduduk miskin (indeks P0) berdasarkan survei bulan Maret. | `14.23` |
+| `Kategori_Kemiskinan`| `str` | Klasifikasi wilayah berdasarkan nilai kuartil data kemiskinan daerah. | `"Rendah"`, `"Sedang"`, `"Tinggi"` |
+| `Kategori_Internet`  | `str` | Klasifikasi wilayah berdasarkan nilai kuartil data penetrasi internet daerah. | `"Rendah"`, `"Sedang"`, `"Tinggi"` |
+
+> Data mentah disimpan pada direktori `data/raw/` dan dataset hasil transformasi akhir disimpan di `data/processed/`.
+
+---
 
 ## 📈 Results & Performance
 
-### Performa Model Numerik (Regresi Linear Sederhana)
-| Metrik | Nilai | Interpretasi |
-| --- | --- | --- |
-| R-Squared (R²) | 0.6748 | Model menjelaskan 67.48% variasi akses internet |
-| Slope (β₁) | -1.9603 | Setiap kenaikan 1% kemiskinan, akses internet turun 1.96% |
-| F-Statistic | 72.6233 | Model signifikan secara statistik (p < 0.001) |
-| Pearson's r | -0.8215 | Korelasi negatif yang sangat kuat |
+### Performa Model Regresi Linear
 
-### Performa Model Kategorikal (Uji Independensi)
-| Metrik | Nilai | Interpretasi |
-| --- | --- | --- |
-| Chi-Square (χ²) | 20.1823 | Signifikan (p = 0.00046), namun asumsi expected frequency dilanggar |
-| Cramer's V | 0.5222 | Ukuran efek asosiasi kategorikal yang Sangat Kuat |
-| Fisher's Exact (p) | 0.0358 | Signifikan (p < 0.05) pada tabel 2x2 biner |
-| Odds Ratio | 0.0000 | Tidak ada provinsi dengan kemiskinan tinggi yang memiliki akses internet tinggi |
+| Metrik | Model Utama OLS | Baseline | Delta vs Baseline |
+|---|:---:|:---:|:---:|
+| Accuracy (R² Score) | 0.6748 (67.48%) | 0.0000 | +67.48% |
+| F-Statistic | 72.6233 (p-value = 0.000000) | — | — |
+| t-Statistic (Slope) | -8.5219 (p-value = 0.000000) | — | — |
+| Intercept (β₀) | 108.1643 | — | — |
+| Slope Koefisien (β₁) | -1.9603 | — | — |
 
 ### Temuan Utama
-1. **Dampak Substansial Kemiskinan:** Setiap kenaikan 1% tingkat kemiskinan di suatu provinsi dikaitkan dengan penurunan akses internet sebesar 1.96%. Model regresi mampu menjelaskan hampir 68% varians akses internet hanya dari satu variabel prediktor ini.
-2. **Kesenjangan Ekstrem (The Digital Divide):** Uji Fisher's Exact menghasilkan Odds Ratio = 0. Ini adalah bukti empiris yang sangat kuat bahwa pada tahun 2024, tidak ada satupun provinsi dengan kategori kemiskinan "Tinggi" yang mampu mencapai kategori akses internet "Tinggi".
-3. **Pencilan Wilayah Papua:** Provinsi-provinsi di wilayah Papua (Papua Pegunungan, Papua Tengah) teridentifikasi sebagai outlier ekstrem baik pada variabel kemiskinan maupun akses internet, yang mendrive sebagian besar varians dan pelanggaran asumsi model.
-4. **Triangulasi Metodologis:** Pendekatan numerik (Pearson & Regresi) dan kategorikal (Cramer's V & Fisher) menghasilkan kesimpulan yang konsisten, memvalidasi bahwa hubungan ini bukan artefak dari cara pengelompokan data.
+
+1. **Hubungan Terbalik yang Signifikan secara Statistik:** Pemodelan regresi membuktikan adanya korelasi negatif yang sangat kuat antara tingkat kemiskinan dan akses internet dengan nilai Pearson $r = -0.8215$. Persamaan regresi $\hat{Y} = 108.16 - 1.9603X$ menunjukkan setiap kenaikan tingkat kemiskinan sebesar 1% di suatu provinsi berkorelasi langsung dengan penurunan akses internet rumah tangga sebesar 1.96%.
+2. **Daya Penjelas Model yang Kuat:** Nilai Koefisien Determinasi ($R^2 = 0.6748$) menandakan bahwa 67.48% variabilitas penetrasi internet antar-provinsi di Indonesia dapat dijelaskan secara linier oleh variabel kemiskinan tunggal. Sisa sebesar 32.52% variansi dipengaruhi oleh faktor eksternal di luar model penelitian.
+3. **Kesenjangan Struktural Ekstrem:** Pengujian Chi-Square ($20.1823, p = 0.000460$) dan Fisher's Exact Test ($p = 0.035853$) mengonfirmasi adanya dependensi kategoris yang kuat dengan nilai Cramer's V sebesar 0.5222 (Kategori Sangat Kuat).
+4. **Analisis Deviasi Matriks Kontingensi:** Sel `[Kemiskinan Tinggi × Internet Rendah]` memberikan kontribusi terbesar terhadap nilai total Chi-Square yaitu sebesar 42.50% dengan Standardized Residual positif yang masif (+2.929). Secara riil terdapat 7 provinsi yang berada di klaster ini dibandingkan nilai ekspektasi teoritis yang hanya sebesar 2.4 provinsi.
+5. **Ketiadaan Anomali Klaster Atas:** Ditemukan fenomena batas mutlak di mana frekuensi pada sel `[Kemiskinan Tinggi × Internet Tinggi]` bernilai 0. Ini memberikan bukti empiris berharga bagi pengambil kebijakan bahwa tidak ada satu pun daerah dengan tingkat kemiskinan tinggi di Indonesia yang mampu mencapai tingkat penetrasi internet kategori tinggi secara organik tanpa intervensi eksternal khusus.
+
+> 📂 Seluruh hasil penghitungan numerik lengkap diekspor secara otomatis ke dalam berkas direktori `results/ringkasan_analisis_statistika.txt`.
+
+---
 
 ## ⚠️ Notes / Limitations
 
-**Scope:** Analisis ini terbatas pada data agregat tingkat provinsi di Indonesia pada tahun 2024. Temuan tidak serta merta mencerminkan dinamika kesenjangan digital di tingkat kabupaten/kota atau tingkat individu.
-
-**Data:** Data bersifat cross-sectional, sehingga analisis ini hanya dapat mengklaim korelasi dan asosiasi, bukan hubungan kausalitas. Faktor perancu (confounding variables) seperti topografi geografis atau kebijakan infrastruktur lokal tidak dimasukkan dalam model.
-
-**Asumsi Analisis:** Uji asumsi klasik pada model OLS menunjukkan bahwa asumsi normalitas terpenuhi, namun asumsi homoskedastisitas (Uji Breusch-Pagan, p < 0.05) dan autokorelasi (Durbin-Watson = 1.03) dilanggar. Hal ini mengindikasikan bahwa standard error dari koefisien regresi mungkin bias, dan prediksi untuk provinsi dengan karakteristik ekstrem (seperti Papua) memiliki tingkat ketidakpastian yang tinggi.
-
-**Generalisasi:** Karena adanya pelanggaran asumsi homoskedastisitas dan keberadaan outlier spasial, model regresi ini sebaiknya tidak digunakan untuk memprediksi akses internet di luar sampel provinsi yang diamati tanpa penyesuaian robust standard errors atau pemodelan spasial.
+- **Scope:** Ruang lingkup analisis ini terbatas pada agregasi data tingkat provinsi di Indonesia untuk tahun kalender 2024. Hasil temuan mencerminkan pola spasial makro-wilayah dan tidak dapat diasumsikan secara langsung merepresentasikan perilaku unit rumah tangga individual secara mikro (potensi *Ecological Fallacy*).
+- **Data:** Dataset yang bersumber dari BPS memiliki karakteristik spasial yang terbatas pada 38 provinsi administratif asal, yang kemudian disaring menjadi 37 entitas setelah pembersihan pencilan. Keterbatasan jumlah sampel ($n = 37$) berpotensi memengaruhi sensitivitas pengujian parameter tertentu pada pengujian sub-grup terkecil.
+- **Asumsi Analisis:** Berdasarkan hasil Uji Asumsi Klasik OLS, residual model terbukti berdistribusi normal (Shapiro-Wilk $p = 0.092 > 0.05$). Namun, ditemukan pelanggaran serius pada asumsi Homoskedastisitas melalui Breusch-Pagan Test ($LM = 20.4326, p = 0.000006 < 0.05$). Hal ini menandakan terjadinya variansi residual yang tidak konstan (Heteroskedastisitas) akibat sebaran variansi yang melebar pada tingkat kemiskinan ekstrem.
+- **Generalisasi:** Temuan pemodelan linier sederhana ini hanya mencakup deteksi pola korelasi dan asosiasi statis pada titik waktu tertentu. Hasil analisis belum divalidasi silang menggunakan data longitudinal (panel data) untuk tahun-tahun sebelumnya atau sesudahnya, sehingga klaim kausalitas mutlak yang bersifat dinamis memerlukan penelitian eksternal lebih lanjut.
 
 <div align="center">
-<sub>
-⭐ Jika analisis ini bermanfaat, pertimbangkan untuk memberikan star!
-<br>
-Made with ❤️ by <a href="https://github.com/username">[Nama Anda]</a> · 2024-06
-</sub>
+  <sub>
+    ⭐ Jika analisis ini bermanfaat, pertimbangkan untuk memberikan star!
+    <br>
+    Made with ❤️ by Student Portofolio Portfolio Analytics · 2026-06
+  </sub>
 </div>
