@@ -41,13 +41,15 @@ This project presents a multi-method statistical analysis of Indonesia's digital
 | Univariate Distribution | Bivariate Scatter Plot |
 |:---:|:---:|
 | <img width="1139" height="490" alt="image" src="https://github.com/user-attachments/assets/2cdf4d45-6cd6-45d4-a979-c73ba0e7176e" />
- | ![Bivariate Scatter](docs/img/02_bivariate_scatter.png) |
+ | <img width="1139" height="490" alt="image" src="https://github.com/user-attachments/assets/a2336f43-e69f-46cb-9d79-961df9e84fde" />
+ |
 | *Distribution and spread of internet access (mean: 85.95%) and poverty rate (mean: 11.33%) across 37 provinces, with mean markers and IQR-based outlier detection.* | *Poverty rate vs. internet access (r = −0.82): a strong negative trend with Papua provinces as structural outliers at the lower-right extreme.* |
 
 | OLS Regression Analysis | Chi-Square Panel |
 |:---:|:---:|
 | ![Regression Line] <img width="1139" height="490" alt="image" src="https://github.com/user-attachments/assets/219b1f47-d796-46bc-b4d4-204ff2246dd8" />
- | ![Chi-Square Panels](docs/img/04_chisquare_panels.png) |
+ | <img width="1139" height="490" alt="image" src="https://github.com/user-attachments/assets/66a807c5-eb7b-4371-afc5-abcaeac61434" />
+ |
 | *OLS regression line (R² = 0.6748, p < 0.001) with annotated equation. Intercept exceeds 100% — a documented extrapolation artifact outside the observed data range (4.00%–32.97%).* | *Four-panel Chi-Square visualization: observed frequencies, expected frequencies, standardized residuals, and grouped bar chart. Cell [High Poverty × Low Internet] contributes 42.5% of total χ².* |
 
 > 📂 All generated figures are stored in `outputs/figures/`. Export each figure from the notebook using `plt.savefig()` before committing.
