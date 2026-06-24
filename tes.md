@@ -45,7 +45,8 @@ This project presents a multi-method statistical analysis of Indonesia's digital
 
 | OLS Regression Analysis | Chi-Square Panel |
 |:---:|:---:|
-| ![Regression Line](docs/img/03_regression_line.png) | ![Chi-Square Panels](docs/img/04_chisquare_panels.png) |
+| ![Regression Line] <img width="1139" height="490" alt="image" src="https://github.com/user-attachments/assets/219b1f47-d796-46bc-b4d4-204ff2246dd8" />
+ | ![Chi-Square Panels](docs/img/04_chisquare_panels.png) |
 | *OLS regression line (R² = 0.6748, p < 0.001) with annotated equation. Intercept exceeds 100% — a documented extrapolation artifact outside the observed data range (4.00%–32.97%).* | *Four-panel Chi-Square visualization: observed frequencies, expected frequencies, standardized residuals, and grouped bar chart. Cell [High Poverty × Low Internet] contributes 42.5% of total χ².* |
 
 > 📂 All generated figures are stored in `outputs/figures/`. Export each figure from the notebook using `plt.savefig()` before committing.
