@@ -1,517 +1,156 @@
-<!-- ================================================================
-     UNIVERSAL README TEMPLATE — Expert Level
-     by [Your Name]
-
-     USAGE GUIDE:
-     - Replace everything inside [brackets]
-     - Delete sections marked *(skip if not applicable)*
-     - Delete all HTML comments before publishing
-     - Badges auto-render on GitHub — update URLs to match your repo
-     ================================================================ -->
-
 <div align="center">
 
-# 🚀 [Project Title]
+# Digital Divide in Indonesia: Poverty and Internet Access
 
-> [One-line tagline: what this does, for whom, and why it matters]
+### Quantifying the statistical association between provincial poverty rates and household internet access across 37 Indonesian provinces using Chi-Square testing, OLS regression, and Pearson correlation on 2024 BPS government data.
 
-<!-- Core badges — update each URL to your repo -->
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-active-brightgreen.svg)]()
-[![Python](https://img.shields.io/badge/python-3.10+-blue)](https://www.python.org/)
-[![Last Commit](https://img.shields.io/github/last-commit/[username]/[repo])](https://github.com/[username]/[repo]/commits)
-[![Issues](https://img.shields.io/github/issues/[username]/[repo])](https://github.com/[username]/[repo]/issues)
+<br>
 
-<!-- Optional extra badges -->
-<!-- [![Build](https://github.com/[username]/[repo]/actions/workflows/ci.yml/badge.svg)]() -->
-<!-- [![Coverage](https://img.shields.io/codecov/c/github/[username]/[repo])]() -->
-<!-- [![Kaggle](https://img.shields.io/badge/kaggle-notebook-blue?logo=kaggle)]() -->
-<!-- [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/[username]/[repo]/blob/main/notebooks/[name].ipynb) -->
+[![Status](https://img.shields.io/badge/status-completed-blue?style=flat-square)]()
+[![Python](https://img.shields.io/badge/python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![Jupyter](https://img.shields.io/badge/jupyter-notebook-F37626?style=flat-square&logo=jupyter&logoColor=white)](notebooks/)
+[![Open in Colab](https://img.shields.io/badge/Open%20in-Colab-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)](https://colab.research.google.com/github/[username]/digital-divide-indonesia-2024/blob/main/notebooks/poverty_internet_access_indonesia_bps2024.ipynb)
+[![Last Commit](https://img.shields.io/github/last-commit/[username]/digital-divide-indonesia-2024?style=flat-square)](https://github.com/[username]/digital-divide-indonesia-2024/commits)
 
 </div>
 
 ---
 
-## 📋 Table of Contents
-
-- [Overview](#-overview)
-- [Problem Statement](#-problem-statement)
-- [Demo & Screenshots](#-demo--screenshots)
-- [Tech Stack & Architecture](#-tech-stack--architecture)
-- [Project Structure](#-project-structure)
-- [Getting Started](#-getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Configuration](#configuration)
-- [Usage](#-usage)
-- [Dataset](#-dataset)
-- [Methodology](#-methodology)
-- [Results & Performance](#-results--performance)
-- [Testing](#-testing)
-- [Deployment](#-deployment)
-- [Roadmap](#-roadmap)
-- [Known Issues & Limitations](#-known-issues--limitations)
-- [Contributing](#-contributing)
-- [License](#-license)
-- [Acknowledgements](#-acknowledgements)
-- [Contact](#-contact)
-
----
-
 ## 📌 Overview
 
-<!-- 
-  2–4 sentences. Answer: What is this? Who is it for? What value does it deliver?
-  Avoid jargon — write as if the reader has 10 seconds to decide if this is worth their time.
--->
-
-[Describe the project at a high level. What does it do? What is the target user or use case? What makes it distinct from existing solutions?]
+This project presents a multi-method statistical analysis of Indonesia's digital divide, examining whether provincial poverty rates are significantly associated with household internet access rates and how strong that relationship is. Using 2024 data from Badan Pusat Statistik (BPS), the analysis covers 37 of Indonesia's 38 provinces and applies a structured six-stage workflow: exploratory data analysis, Pearson correlation, OLS linear regression with full assumption diagnostics, Chi-Square test of independence, Fisher's Exact Test, and Cramer's V effect size estimation. The analysis is intended for data scientists, researchers, and policy analysts who want empirical, quantified evidence on the socioeconomic determinants of internet access disparity in Indonesia. Output includes nine publication-quality figures and a complete statistical summary embedded in the notebook.
 
 ---
 
 ## ❓ Problem Statement
 
-<!--
-  Answer: Why does this project exist?
-  - What pain point or gap does it address?
-  - What is the current state / alternative, and why is it insufficient?
-  - What is the expected impact of solving this?
--->
+**Context:** Indonesia's internet penetration rate varies dramatically across provinces in 2024, ranging from 97.57% (Kepulauan Riau) to just 12.15% (Papua Pegunungan) — a gap of over 85 percentage points. Poverty rates show a comparable spread, from 4.00% (Bali) to 32.97% (Papua Pegunungan). These patterns suggest a potential structural link between economic deprivation and digital exclusion, but the statistical nature and quantified strength of this relationship had not been formally examined using current data and a rigorous multi-method approach.
 
-[Explain the problem, context, and motivation. Include data or evidence if available. This section is your "why."]
+**Gap:** BPS publishes both datasets independently at the provincial level, but limited analytical work integrates them using methods that cover both parametric (Pearson r, OLS regression with assumption diagnostics) and non-parametric (Chi-Square, Fisher's Exact Test) approaches alongside effect size estimation. Without this, the "digital divide" narrative in Indonesia remains descriptive rather than statistically grounded.
+
+**Solution:** This analysis merges both 2024 BPS datasets at the provincial level and applies a rigorous statistical workflow to quantify the direction, magnitude, and significance of the poverty-internet relationship. The results provide an evidence base for digital equity discussions, infrastructure policy prioritization, and poverty alleviation program design in Indonesia.
 
 ---
 
 ## 🎥 Demo & Screenshots
 
-<!-- 
-  Show first, explain later. 
-  Options: GIF, screenshots, embedded video, live link (Streamlit, Vercel, Power BI, etc.)
-  Use a table for side-by-side images.
--->
+> 📓 **Notebook:** &nbsp;[Open in Colab](https://colab.research.google.com/github/[username]/digital-divide-indonesia-2024/blob/main/notebooks/poverty_internet_access_indonesia_bps2024.ipynb) &nbsp;|&nbsp; [Render on nbviewer](https://nbviewer.org/github/[username]/digital-divide-indonesia-2024/blob/main/notebooks/poverty_internet_access_indonesia_bps2024.ipynb)
 
-> 🔗 **Live Demo:** [link here — Streamlit / GitHub Pages / Vercel / Power BI embed]
+<br>
 
-| Feature A | Feature B |
-|:---------:|:---------:|
-| ![Screenshot A](docs/img/screenshot_a.png) | ![Screenshot B](docs/img/screenshot_b.png) |
-| *Caption A* | *Caption B* |
+| Univariate Distribution | Bivariate Scatter Plot |
+|:---:|:---:|
+| ![Univariate Distribution](docs/img/01_univariate_distribution.png) | ![Bivariate Scatter](docs/img/02_bivariate_scatter.png) |
+| *Distribution and spread of internet access (mean: 85.95%) and poverty rate (mean: 11.33%) across 37 provinces, with mean markers and IQR-based outlier detection.* | *Poverty rate vs. internet access (r = −0.82): a strong negative trend with Papua provinces as structural outliers at the lower-right extreme.* |
 
-<!-- For notebooks, link directly to the rendered view -->
-> 📓 **Notebook preview:** [View on nbviewer](https://nbviewer.org/github/[username]/[repo]/blob/main/notebooks/[name].ipynb)
+| OLS Regression Analysis | Chi-Square Panel |
+|:---:|:---:|
+| ![Regression Line](docs/img/03_regression_line.png) | ![Chi-Square Panels](docs/img/04_chisquare_panels.png) |
+| *OLS regression line (R² = 0.6748, p < 0.001) with annotated equation. Intercept exceeds 100% — a documented extrapolation artifact outside the observed data range (4.00%–32.97%).* | *Four-panel Chi-Square visualization: observed frequencies, expected frequencies, standardized residuals, and grouped bar chart. Cell [High Poverty × Low Internet] contributes 42.5% of total χ².* |
 
----
-
-## 🛠️ Tech Stack & Architecture
-
-### Stack
-
-| Layer | Technology | Purpose |
-|---|---|---|
-| Language | Python 3.10 / Java 17 / JavaScript | Core logic |
-| Framework | FastAPI / Spring Boot / React | [Role] |
-| Data Processing | Pandas, NumPy | Data wrangling |
-| Visualization | Matplotlib, Seaborn / Power BI | Charts & dashboards |
-| ML / Modeling | Scikit-learn, XGBoost | *(if applicable)* |
-| Database | PostgreSQL / SQLite / Firebase | *(if applicable)* |
-| Deployment | Docker, GitHub Actions, Heroku | CI/CD & hosting |
-
-### Architecture Overview *(skip if not applicable)*
-
-```
-[Input / Data Source]
-        │
-        ▼
-[Ingestion / Collection]
-        │
-        ▼
-[Preprocessing / Feature Engineering]
-        │
-        ▼
-[Model / Business Logic / Dashboard]
-        │
-        ▼
-[Output: API / Report / Visualization]
-```
-
-<!-- Or embed a diagram image -->
-<!-- ![Architecture Diagram](docs/architecture.png) -->
+> 📂 All generated figures are stored in `outputs/figures/`. Export each figure from the notebook using `plt.savefig()` before committing.
 
 ---
 
-## 📁 Project Structure
+## 🛠️ Tech Stack
 
-```
-[project-root]/
-│
-├── data/
-│   ├── raw/                  # Original, unmodified source data
-│   ├── processed/            # Cleaned & transformed data
-│   └── external/             # Third-party reference data
-│
-├── notebooks/                # Jupyter notebooks (EDA, modeling, reporting)
-│   ├── 01_eda.ipynb
-│   ├── 02_preprocessing.ipynb
-│   └── 03_modeling.ipynb
-│
-├── src/                      # Source code / reusable modules
-│   ├── __init__.py
-│   ├── data_loader.py
-│   ├── preprocess.py
-│   ├── model.py
-│   └── utils.py
-│
-├── tests/                    # Unit & integration tests
-│   └── test_model.py
-│
-├── docs/                     # Documentation assets (images, diagrams)
-│   └── img/
-│
-├── results/                  # Model outputs, reports, exported charts
-│
-├── .env.example              # Environment variable template (commit this)
-├── .gitignore
-├── requirements.txt          # Python: pip dependencies
-├── pom.xml                   # Java: Maven dependencies *(if applicable)*
-├── package.json              # JS/Node dependencies *(if applicable)*
-├── Dockerfile                # *(if applicable)*
-├── docker-compose.yml        # *(if applicable)*
-└── README.md
-```
-
-> **Key entry points:**
-> - `src/main.py` — main execution script
-> - `notebooks/01_eda.ipynb` — start here for data exploration
-> - `.env.example` — copy to `.env` and fill in secrets before running
+| Layer | Technology | Role in Project |
+|:---:|:---:|---|
+| Language | Python 3.10+ | Primary language for the entire analysis pipeline |
+| Environment | Google Colab / Jupyter Notebook | Interactive execution, EDA, and inline reporting |
+| Data Processing | Pandas, NumPy | Data loading, column renaming, inner merge on province name, missing value handling, IQR outlier detection |
+| Visualization | Matplotlib, Seaborn | Nine output figures: histograms, boxplots, scatter plots, heatmaps, regression plot, diagnostic panels, GoF charts |
+| Statistical Analysis | SciPy (stats) | Pearson correlation, Chi-Square, Fisher's Exact Test, Shapiro-Wilk, Breusch-Pagan, Durbin-Watson |
+| Regression Modeling | Scikit-learn | OLS linear regression, R² scoring, residual extraction |
+| Version Control | Git + GitHub | Source control and documentation |
 
 ---
 
-## 🚀 Getting Started
+## 📊 Dataset
 
-### Prerequisites
+### Metadata
 
-List everything needed **before** installation. Be explicit with versions.
-
-- Python >= 3.10 (`python --version`)
-- pip >= 23.0 (`pip --version`)
-- [Other: Node.js 18+, JDK 17, Docker 24+, Power BI Desktop, etc.]
-
-```bash
-# Verify Python version
-python --version
-```
-
-### Installation
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/[username]/[repo].git
-cd [repo]
-
-# 2. Create and activate a virtual environment (Python)
-python -m venv venv
-source venv/bin/activate        # macOS / Linux
-# venv\Scripts\activate         # Windows
-
-# 3. Install dependencies
-pip install -r requirements.txt
-
-# For development dependencies (linting, testing):
-# pip install -r requirements-dev.txt
-```
-
-<!-- Java alternative -->
-<!--
-```bash
-mvn install
-```
--->
-
-<!-- Node.js alternative -->
-<!--
-```bash
-npm install
-```
--->
-
-### Configuration
-
-```bash
-# Copy the environment variable template
-cp .env.example .env
-```
-
-Then open `.env` and fill in your values:
-
-| Variable | Description | Required | Default |
-|---|---|:---:|---|
-| `API_KEY` | Your [service] API key | ✅ | — |
-| `DATABASE_URL` | DB connection string | ✅ | — |
-| `MODEL_PATH` | Path to saved model file | ⬜ | `models/model.pkl` |
-| `DEBUG` | Enable verbose logging | ⬜ | `False` |
-
-> ⚠️ Never commit your `.env` file. It is listed in `.gitignore` by default.
-
----
-
-## ▶️ Usage
-
-### Basic Run
-
-```bash
-# Run the main pipeline
-python src/main.py
-
-# With arguments
-python src/main.py --input data/raw/dataset.csv --output results/ --verbose
-```
-
-### Jupyter Notebooks
-
-```bash
-jupyter notebook
-# Then open: notebooks/01_eda.ipynb
-```
-
-### As a Module
-
-```python
-from src.model import predict
-from src.preprocess import clean_data
-
-df = clean_data("data/raw/dataset.csv")
-predictions = predict(df)
-print(predictions.head())
-```
-
-### CLI Options *(if applicable)*
-
-| Flag | Description | Default |
-|---|---|---|
-| `--input` | Path to input file | `data/raw/` |
-| `--output` | Path to output directory | `results/` |
-| `--verbose` | Enable debug logging | `False` |
-| `--config` | Path to config YAML file | `config.yaml` |
-
----
-
-## 📊 Dataset *(skip if not applicable)*
+**Dataset 1 — Internet Access**
 
 | Attribute | Detail |
 |---|---|
-| **Source** | [Kaggle / UCI / API / Web scraping / Internal] |
-| **Link** | [URL or citation] |
-| **Size** | X rows × Y columns (~Z MB) |
-| **Format** | CSV / JSON / Parquet / SQL |
-| **License** | [CC BY 4.0 / Public Domain / Proprietary] |
-| **Last Updated** | YYYY-MM-DD |
+| **Source** | Badan Pusat Statistik (BPS) Indonesia |
+| **Link** | [Persentase Rumah Tangga yang Pernah Mengakses Internet, 2024](https://www.bps.go.id/id/statistics-table/2/Mzk4IzI=/persentase-rumah-tangga-yang-pernah-mengakses-internet-dalam-3-bulan-terakhir-menurut-provinsi-dan-klasifikasi-daerah.html) |
+| **Size** | 39 rows × 4 columns (raw); 37 provinces × 4 columns (after cleaning) |
+| **Format** | CSV |
+| **License** | Public government data (BPS) |
+| **Time Coverage** | 2024 |
 
-**Key variables:**
+**Dataset 2 — Poverty Rate**
 
-| Column | Type | Description |
-|---|---|---|
-| `col_a` | `int` | [Description] |
-| `col_b` | `float` | [Description] |
-| `target` | `str` | [Description — label/outcome] |
+| Attribute | Detail |
+|---|---|
+| **Source** | Badan Pusat Statistik (BPS) Indonesia |
+| **Link** | [Persentase Penduduk Miskin (P0) Menurut Provinsi dan Daerah, 2024](https://www.bps.go.id/id/statistics-table/2/MTkyIzI=/persentase-penduduk-miskin--p0--menurut-provinsi-dan-daerah.html) |
+| **Size** | 39 rows × 10 columns (raw); 37 provinces × 2 columns (after cleaning) |
+| **Format** | CSV |
+| **License** | Public government data (BPS) |
+| **Time Coverage** | March 2024 (Semester 1) |
 
-> Raw data lives in `data/raw/`. To reproduce the full preprocessing pipeline:
-> ```bash
-> python src/preprocess.py --input data/raw/ --output data/processed/
-> ```
+> Raw data files are not included in this repository. Download both CSVs directly from the BPS links above, place them in the `data/` folder, and follow the instructions in [`data/README.md`](data/README.md) before running the notebook.
 
----
+### Data Dictionary (Final Merged Dataset — 37 Provinces × 5 Columns)
 
-## 🔬 Methodology *(skip if not applicable)*
-
-<!--
-  Critical for ML, data science, analytical, and research projects.
-  Explain your approach so others can understand, critique, and reproduce your work.
--->
-
-### Approach
-
-[High-level narrative: What strategy did you use and why?]
-
-### Pipeline Steps
-
-1. **Data Collection** — [how data was gathered; tools, APIs, or scraping used]
-2. **Preprocessing** — [missing value handling, encoding, scaling, feature engineering]
-3. **Exploratory Data Analysis** — [key findings that shaped the approach]
-4. **Modeling / Analysis** — [algorithm(s) chosen and rationale]
-5. **Evaluation** — [metrics selected and justification]
-6. **Interpretation** — [how results are translated into insights]
-
-### Design Decisions
-
-| Decision | Chosen Approach | Rationale |
-|---|---|---|
-| Algorithm | XGBoost over Random Forest | Handles class imbalance better in this dataset |
-| Scaling | MinMaxScaler | Target variable bounded between 0–1 |
-| Validation | Stratified K-Fold (k=5) | Maintains class distribution across folds |
+| Column | Data Type | Description | Example Values |
+|---|:---:|---|---|
+| `Provinsi` | `str` | Province name (uppercase, 37 provinces after removing DKI Jakarta) | `"ACEH"`, `"BALI"` |
+| `Internet_Perkotaan` | `float64` | Urban household internet access rate (%) | `92.60`, `98.68` |
+| `Internet_Perdesaan` | `float64` | Rural household internet access rate (%) | `86.97`, `8.81` |
+| `Internet_Total` | `float64` | **Dependent variable (Y)** — overall internet access rate per province (%) | `88.95`, `12.15` |
+| `Kemiskinan_Persen` | `float64` | **Independent variable (X)** — poverty rate per province, March 2024 (%) | `14.23`, `4.00` |
 
 ---
 
 ## 📈 Results & Performance
 
-<!-- 
-  Be specific. Metrics, benchmarks, comparisons. 
-  Link to full output if too long.
--->
-
-### Model Metrics *(if applicable)*
-
-| Metric | Value | Benchmark / Baseline |
-|---|---|---|
-| Accuracy | 94.5% | 87.2% (baseline) |
-| F1-Score (weighted) | 0.943 | — |
-| AUC-ROC | 0.978 | — |
-| MAE | 1.23 | — |
-| Inference Time | ~2.4s / batch (1000 rows) | — |
-
 ### Key Findings
 
-- [Finding 1: concise, specific, quantified if possible]
-- [Finding 2]
-- [Finding 3]
+1. **Very strong negative correlation (r = −0.8215, p < 0.001)** — Provinces with higher poverty rates consistently show lower internet access rates. The association is statistically significant at all conventional significance levels (n = 37, two-tailed).
 
-> 📂 Full results, confusion matrices, and charts are in `results/` and `notebooks/03_modeling.ipynb`.
+2. **OLS regression explains 67.48% of variance** — The simple linear model (Ŷ = 108.16 − 1.96X) yields R² = 0.6748 (adj. R² = 0.6655, F = 72.62, p < 0.001). Each 1-percentage-point increase in poverty rate is associated with a 1.96% decrease in internet access (β₁ = −1.9603, SE = 0.2300, 95% CI: [−2.43, −1.49]).
 
----
+3. **Chi-Square independence test confirmed by Fisher's Exact Test** — The 3×3 Chi-Square test (χ² = 20.18, df = 4, p = 0.000460) was supplemented by Fisher's Exact Test (p = 0.036) as the appropriate fallback, since 77.8% of expected frequency cells fell below 5. Both tests reject H₀ at α = 0.05.
 
-## 🧪 Testing *(skip if not applicable)*
+4. **Large effect size: Cramer's V = 0.5222** — Classified as "Very Strong" for a 3×3 contingency table (df = 2), fully consistent with the Pearson correlation result. Both categorical and continuous approaches converge on the same conclusion.
 
-```bash
-# Run all tests
-pytest tests/ -v
+5. **No high-poverty province has high internet access** — The cell [High Poverty × High Internet Access] = 0 observed vs. 2.7 expected. This zero-cell finding indicates an absolute structural barrier: no province in the highest poverty tier achieves high internet access in the 2024 data.
 
-# Run with coverage report
-pytest tests/ --cov=src --cov-report=term-missing
+6. **The [High Poverty × Low Internet Access] cell drives 42.5% of total χ²** — Seven of 10 high-poverty provinces fall in the low internet access category (expected under independence: 2.4 provinces), with a standardized residual of 2.929. This single cell is the primary statistical engine behind the significant Chi-Square result.
 
-# Run a specific test file
-pytest tests/test_model.py
-```
+| OLS Assumption Diagnostics | Crosstab Standardized Residuals |
+|:---:|:---:|
+| ![Diagnostic Plots](docs/img/05_diagnostic_plots.png) | *[Screenshot: Standardized residuals heatmap — place `outputs/figures/04_crosstab_heatmap.png` here after exporting from notebook]* |
+| *Four-panel OLS diagnostics. Fan-shaped pattern in Residuals vs Fitted confirms heteroscedasticity. Q-Q plot shows near-normal residuals with tail deviation driven by Papua outliers.* | *3×3 heatmap with standardized residuals. Cell [Tinggi × Rendah] (res = 2.93) and cell [Tinggi × Tinggi] (res = −1.64) show the strongest deviations from independence.* |
 
-> **Coverage target:** ≥ 80%
-> **Test framework:** pytest
-> Test files are located in `tests/`. Each module in `src/` has a corresponding test file.
+> 📂 All output figures are stored in `outputs/figures/`.
 
 ---
 
-## 🐳 Deployment *(skip if not applicable)*
+## ⚠️ Notes / Limitations
 
-### Docker
+- **Scope:** Cross-sectional analysis at the provincial level using a single year of data (2024). No causal claims can be made from this design. The findings describe association strength and direction only.
 
-```bash
-# Build the image
-docker build -t [project-name]:latest .
+- **Data:** DKI Jakarta was excluded due to a missing `Internet_Perdesaan` value (97.37% of data retained). The three Papua provinces — Papua Pegunungan (Internet: 12.15%, Poverty: 32.97%), Papua Tengah (36.08%, 29.76%), and Papua Selatan (65.71%, 17.44%) — are structural outliers that substantially influence correlation strength, residual variance, and effect size estimates. Their inclusion reflects real-world conditions, but a robustness check excluding these provinces is recommended.
 
-# Run the container
-docker run -p 8080:8080 --env-file .env [project-name]:latest
-```
+- **Statistical Assumptions:** Two of three OLS classical assumptions are violated: homoscedasticity (Breusch-Pagan p < 0.001) and no autocorrelation (Durbin-Watson = 1.04, indicating positive autocorrelation likely caused by geographic clustering of Papua provinces). Normality of residuals is satisfied (Shapiro-Wilk p = 0.092). Robust standard errors or Weighted Least Squares were not applied in this version; coefficient confidence intervals should be interpreted with caution.
 
-### Docker Compose
+- **Generalizability:** Findings reflect 2024 provincial-level averages and may not generalize to sub-provincial or district-level patterns, or to years outside the study period. Multi-year panel data would be needed to assess the temporal stability of this relationship.
 
-```bash
-docker-compose up --build
-```
+- **Reproducibility:** The notebook uses Google Colab's `files.upload()` mechanism for data loading, which requires manual file upload at runtime. To run locally, replace the upload block with `pd.read_csv('data/[filename].csv', skiprows=n)` after downloading both BPS datasets and placing them in `data/`. Full instructions are in [`data/README.md`](data/README.md).
 
-### CI/CD
-
-This project uses **GitHub Actions** for automated testing and deployment.
-See `.github/workflows/` for pipeline configuration.
-
-| Workflow | Trigger | Action |
-|---|---|---|
-| `ci.yml` | Push to `main` | Run tests + lint |
-| `deploy.yml` | Merge to `main` | Deploy to [platform] |
-
-### Other Platforms *(choose what applies)*
-
-```bash
-# Streamlit
-streamlit run src/app.py
-
-# FastAPI
-uvicorn src.api:app --reload --port 8000
-
-# Heroku
-heroku create && git push heroku main
-```
-
----
-
-## 🗺️ Roadmap
-
-<!--
-  Show that this project is alive and you have direction.
-  Check boxes that are done, leave others unchecked.
--->
-
-- [x] Core data pipeline
-- [x] Baseline model / initial analysis
-- [x] Interactive dashboard
-- [ ] Model performance optimization (target: F1 > 0.96)
-- [ ] REST API endpoint (`/predict`)
-- [ ] Automated retraining pipeline
-- [ ] Unit test coverage ≥ 80%
-- [ ] Docker deployment
-
----
-
-## ⚠️ Known Issues & Limitations
-
-- **[Issue 1]:** [Description + workaround if available]. See [#issue-number](link).
-- **[Issue 2]:** [Description]
-- **Scope:** This project was built for [specific context / dataset / domain]. Generalizability to [other context] has not been validated.
-- **Performance:** Model accuracy degrades on data outside the training distribution (year [X], region [Y]).
-- **Scale:** Not optimized for datasets > [X] GB in-memory; consider chunked processing for large inputs.
-
----
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!
-
-1. **Fork** this repository
-2. **Create** a feature branch: `git checkout -b feature/your-feature-name`
-3. **Commit** your changes: `git commit -m 'feat: add your feature'`
-4. **Push** to the branch: `git push origin feature/your-feature-name`
-5. **Open a Pull Request** and describe your changes
-
-Please follow the [Conventional Commits](https://www.conventionalcommits.org/) format for commit messages.
-
-> See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed code style guidelines and PR checklist.
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
-See the [LICENSE](LICENSE) file for full details.
-
----
-
-## 🙏 Acknowledgements
-
-- [Author / Paper Title](link) — methodology reference
-- [Library / Tool](link) — used for [specific purpose]
-- [Dataset Provider](link) — data source
-- Inspired by [project / person / blog post](link)
-
----
-
-## 📬 Contact
-
-**[Your Full Name]**
-
-[![GitHub](https://img.shields.io/badge/GitHub-@username-181717?logo=github)](https://github.com/[username])
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-yourname-0A66C2?logo=linkedin)](https://linkedin.com/in/[username])
-[![Email](https://img.shields.io/badge/Email-your@email.com-D14836?logo=gmail)](mailto:your@email.com)
-
-> 💬 Found a bug or have a suggestion? [Open an issue](https://github.com/[username]/[repo]/issues/new).
+- **Missing Variable Bias:** The model uses a single predictor. Known confounders — telecommunications infrastructure investment, geographic terrain, education levels, local government digital policy — are acknowledged but not controlled for. The remaining 32.52% unexplained variance (1 − R²) is attributed to these omitted factors.
 
 ---
 
 <div align="center">
-  <sub>Made with ❤️ by <a href="https://github.com/[username]">[Your Name]</a> | Last updated: YYYY-MM</sub>
+  <sub>
+    ⭐ If this analysis was useful, consider giving the repository a star.
+    <br>
+    Made with ❤️ by <a href="https://github.com/[username]">[Your Name]</a> · 2024
+  </sub>
 </div>
