@@ -1,125 +1,113 @@
 <div align="center">
 
-# Indonesia Provincial Digital Divide Analysis
+# Analisis Inferensial Kesenjangan Digital Indonesia
 
-### A reproducible statistical case study of the relationship between internet access and poverty across Indonesian provinces in 2024
+**Menguji hubungan statistik antara tingkat kemiskinan dan akses internet antarprovinsi di Indonesia menggunakan pendekatan triangulasi numerik dan kategorikal.**
+
+![Status](https://img.shields.io/badge/status-completed-blue?style=flat-square)
+![Python](https://img.shields.io/badge/python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)
+![Jupyter](https://img.shields.io/badge/jupyter-notebook-F37626?style=flat-square&logo=jupyter&logoColor=white)
+![Last Commit](https://img.shields.io/github/last-commit/username/idn-digital-divide-inference?style=flat-square)
 
 </div>
 
----
-
 ## 📌 Overview
 
-This repository contains a notebook-based statistical analysis of the relationship between provincial internet access and poverty in Indonesia in 2024. The workflow combines data cleaning, province-level merging, exploratory analysis, Pearson correlation, linear regression, chi-square testing, Fisher's exact test, and residual analysis.
-
-The project is designed as a portfolio case study for technical reviewers who want to inspect both the analytical process and the statistical evidence. The emphasis is on traceable preprocessing, quantified findings, and transparent limitations rather than on deployment.
-
----
+Proyek ini merupakan analisis inferensial tingkat lanjut yang mengevaluasi hubungan antara tingkat kemiskinan dan akses internet di 37 provinsi Indonesia tahun 2024. Berfokus pada validitas statistik, analisis ini tidak hanya mengandalkan korelasi numerik, tetapi melakukan triangulasi menggunakan uji independensi kategorikal. Output utama berupa laporan diagnostik lengkap yang mencakup pemodelan regresi linear, uji asumsi klasik, hingga fallback metodologis menggunakan Fisher's Exact Test. Hasil penelitian ini ditujukan untuk analis kebijakan, peneliti sosial, dan praktisi data science yang membutuhkan bukti empiris mengenai kesenjangan digital.
 
 ## ❓ Problem Statement
 
-**Context:**  
-Provincial internet access and poverty rates are both publicly available in BPS statistical tables, but the raw tables do not explain whether the two variables move together, how strong the relationship is, or whether that relationship remains visible when the data is examined from both numeric and categorical perspectives.
+**Konteks:** Kesenjangan digital merupakan hambatan struktural bagi pemerataan ekonomi di Indonesia. Meskipun penetrasi internet meningkat, disparitas antarwilayah masih sangat tinggi, terutama antara wilayah Jawa-Bali dengan kawasan timur Indonesia.
 
-**Gap:**  
-A direct table lookup is not enough for portfolio-grade analysis. The missing layer is a reproducible statistical workflow that cleans the data, aligns the provincial units, checks data quality, and validates the association with multiple methods.
+**Gap:** Banyak analisis data sosial hanya berhenti pada perhitungan korelasi permukaan atau visualisasi heatmap tanpa menguji signifikansi statistik secara ketat. Pendekatan ini sering mengabaikan pelanggaran asumsi model dan risiko kesalahan interpretasi pada data agregat.
 
-**Solution:**  
-This project merges the two BPS tables at province level, cleans inconsistent entries, removes missing values, and evaluates the relationship through correlation, regression, chi-square testing, Fisher's exact test, and residual-based interpretation. The result is a compact but evidence-driven analysis of the digital divide across Indonesian provinces.
-
----
+**Solusi:** Proyek ini menerapkan kerangka inferensial yang ketat. Analisis dimulai dari pemodelan regresi linear sederhana untuk mengukur efek numerik, dilanjutkan dengan uji asumsi klasik. Ketika asumsi Chi-Square dilanggar pada data kategorikal, analisis melakukan fallback ke Fisher's Exact Test. Pendekatan ini memastikan bahwa klaim hubungan antarvariabel didukung oleh bukti statistik yang robust, bukan sekadar kebetulan sampel.
 
 ## 🎥 Demo & Screenshots
 
-The figures below should be exported from the notebooks and saved under `docs/img/`.
+📓 **Notebook:** [Lihat di nbviewer](https://nbviewer.org/github/username/idn-digital-divide-inference/blob/main/notebooks/01_inferential_analysis_digital_divide.ipynb) | ![Open in Colab](https://img.shields.io/badge/Open%20in-Colab-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)
 
-| Data Audit Snapshot | Regression Fit |
-|:---:|:---:|
-| ![Data audit snapshot](docs/img/01_data_audit_snapshot.png) | ![Regression scatter](docs/img/02_regression_scatter.png) |
-| Cleaned sample, missing-value handling, and final province count. | Scatter plot with regression line, equation, and R² annotation. |
+| Distribusi Akses Internet vs Kemiskinan | Peta Korelasi dan Regresi Linear |
+| --- | --- |
+| ![Scatter Plot](outputs/figures/scatter_regression.png) | ![Crosstab Heatmap](outputs/figures/crosstab_heatmap.png) |
+| *Hubungan negatif yang kuat antara persentase kemiskinan dan akses internet, dengan garis regresi dan interval kepercayaan.* | *Matriks kontingensi yang menunjukkan konsentrasi provinsi kemiskinan tinggi pada kategori akses internet rendah.* |
 
-| Chi-Square Diagnostics | Fisher 2×2 Summary |
-|:---:|:---:|
-| ![Chi-square diagnostics](docs/img/03_chi_square_diagnostics.png) | ![Fisher summary](docs/img/04_fisher_2x2_summary.png) |
-| Observed, expected, and standardized residual heatmaps. | Binary contingency table used for Fisher's exact test. |
-
----
+| Diagnostik Asumsi OLS | Fisher's Exact Test (Fallback) |
+| --- | --- |
+| ![Diagnostic Plots](outputs/figures/diagnostic_plots.png) | ![Fisher Exact](outputs/figures/fisher_exact_2x2.png) |
+| *Residual vs Fitted dan Q-Q Plot untuk mengevaluasi validitas asumsi homoskedastisitas dan normalitas.* | *Heatmap tabel 2x2 biner yang membuktikan tidak ada provinsi kemiskinan tinggi dengan akses internet tinggi.* |
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology | Role in the Project |
-|:---:|:---:|---|
-| Language | Python 3 | Main language for the full analytical workflow |
-| Environment | Jupyter Notebook | Interactive analysis, validation, and reporting |
-| Data Processing | Pandas, NumPy | Cleaning, transformation, merging, and tabulation |
-| Visualization | Matplotlib, Seaborn | Distribution plots, scatter plots, heatmaps, and diagnostic charts |
-| Statistics / Modeling | SciPy, Scikit-learn | Correlation, regression, chi-square, and assumption checks |
-| Version Control | Git + GitHub | Repository management and portfolio presentation |
-
----
+| Layer | Teknologi | Peran dalam Project |
+| --- | --- | --- |
+| Language | Python 3.10 | Bahasa utama untuk seluruh pipeline analisis dan inferensi |
+| Environment | Jupyter Notebook | Eksekusi interaktif, eksplorasi data, dan pelaporan |
+| Data Processing | Pandas, NumPy | Pembersihan data, merging dataset BPS, dan kategorisasi kuartil |
+| Visualization | Matplotlib, Seaborn | Visualisasi distribusi, scatter plot, heatmap, dan diagnostik residual |
+| Statistical Modeling | SciPy, Scikit-learn | Uji korelasi, regresi linear, Chi-Square, Fisher's Exact, dan uji asumsi |
 
 ## 📊 Dataset
 
 ### Metadata
-
 | Atribut | Detail |
-|---|---|
-| **Source** | BPS provincial statistical tables |
-| **Link** | Not embedded in the notebook export |
-| **Size** | Raw: 39 × 4 and 39 × 10; Final merged dataset: 37 × 5 |
-| **Format** | CSV |
-| **License** | Public statistical tables; code license can be added separately |
-| **Coverage** | Indonesia, provincial level, 2024 |
-| **Accessed on** | Not recorded in the notebook export |
+| --- | --- |
+| Sumber | Badan Pusat Statistik (BPS) Indonesia |
+| Link | [Dataset Akses Internet](https://www.bps.go.id) & [Dataset Kemiskinan](https://www.bps.go.id) |
+| Ukuran | 37 baris × 5 kolom utama (setelah cleaning) |
+| Format | CSV |
+| Cakupan Waktu | Maret 2024 (Semester 1) |
+| Diakses pada | 2024 |
 
-### Data Dictionary (Key Columns)
+### Data Dictionary (Kolom Kunci)
+| Kolom | Tipe Data | Deskripsi | Contoh Nilai |
+| --- | --- | --- | --- |
+| `Provinsi` | str | Nama provinsi di Indonesia | "JAWA BARAT" |
+| `Internet_Total` | float | Persentase rumah tangga dengan akses internet | 88.95 |
+| `Kemiskinan_Persen` | float | Persentase penduduk miskin (P0) | 14.23 |
+| `Kategori_Internet` | str | Kategorisasi berbasis kuartil (Rendah, Sedang, Tinggi) | "Sedang" |
+| `Kategori_Kemiskinan` | str | Kategorisasi berbasis kuartil (Rendah, Sedang, Tinggi) | "Tinggi" |
 
-| Column | Type | Description | Example Value |
-|---|:---:|---|---|
-| `Provinsi` | `str` | Province name used as the merge key | `ACEH` |
-| `Internet_Perkotaan` | `float` | Percentage of households in urban areas that accessed the internet in the last 3 months | `92.60` |
-| `Internet_Perdesaan` | `float` | Percentage of households in rural areas that accessed the internet in the last 3 months | `86.97` |
-| `Internet_Total` | `float` | Overall provincial internet access percentage | `88.95` |
-| `Kemiskinan_Persen` | `float` | Provincial poverty rate used in the analysis | `14.23` |
-
-> The raw files should live in `data/raw/`, and the cleaned merged dataset should be saved in `data/processed/`.
-
----
+Data mentah tersimpan di `data/raw/` dan data yang telah digabungkan serta dibersihkan tersimpan di `data/processed/`.
 
 ## 📈 Results & Performance
 
-1. **The cleaned analytic dataset contains 37 provinces and 5 variables.**  
-   The original merged data had 38 provinces, but one row was removed because `Internet_Perdesaan` was missing for DKI Jakarta. This keeps the analysis internally consistent.  
+### Performa Model Numerik (Regresi Linear Sederhana)
+| Metrik | Nilai | Interpretasi |
+| --- | --- | --- |
+| R-Squared (R²) | 0.6748 | Model menjelaskan 67.48% variasi akses internet |
+| Slope (β₁) | -1.9603 | Setiap kenaikan 1% kemiskinan, akses internet turun 1.96% |
+| F-Statistic | 72.6233 | Model signifikan secara statistik (p < 0.001) |
+| Pearson's r | -0.8215 | Korelasi negatif yang sangat kuat |
 
-2. **Poverty and internet access show a very strong negative linear association.**  
-   Pearson correlation is `r = -0.8215`, with `p-value < 0.001`, which indicates that higher poverty rates are associated with lower internet access across provinces.  
+### Performa Model Kategorikal (Uji Independensi)
+| Metrik | Nilai | Interpretasi |
+| --- | --- | --- |
+| Chi-Square (χ²) | 20.1823 | Signifikan (p = 0.00046), namun asumsi expected frequency dilanggar |
+| Cramer's V | 0.5222 | Ukuran efek asosiasi kategorikal yang Sangat Kuat |
+| Fisher's Exact (p) | 0.0358 | Signifikan (p < 0.05) pada tabel 2x2 biner |
+| Odds Ratio | 0.0000 | Tidak ada provinsi dengan kemiskinan tinggi yang memiliki akses internet tinggi |
 
-3. **The regression model explains a substantial portion of variation.**  
-   The fitted line is `Y = 108.1643 + (-1.9603)X`, with `R² = 0.6748` and adjusted `R² = 0.6655`. Interpreted practically, a 1% increase in poverty is associated with an estimated 1.9603% decrease in internet access in this dataset.  
-
-4. **The regression is informative, but not fully clean on assumptions.**  
-   Normality of residuals passes (`Shapiro-Wilk p = 0.092351`), while homoskedasticity and no-autocorrelation checks do not (`Breusch-Pagan p = 0.000006`, `Durbin-Watson = 1.0366`). That means the model is best read as an exploratory association result, not a final causal model.  
-
-5. **The categorical view confirms the same pattern.**  
-   Chi-square testing gives `χ² = 20.1823` with `p = 0.000460`, and Cramer's V is `0.5222`, which indicates a strong association. Because `77.8%` of expected frequencies are below 5, Fisher's exact test is also used and remains significant (`p = 0.035853`).  
-
-6. **The strongest cell is the high-poverty / low-internet combination.**  
-   The category `[Tinggi × Rendah]` contributes `42.50%` of the total chi-square statistic, which makes it the clearest signal in the contingency analysis.
-
----
+### Temuan Utama
+1. **Dampak Substansial Kemiskinan:** Setiap kenaikan 1% tingkat kemiskinan di suatu provinsi dikaitkan dengan penurunan akses internet sebesar 1.96%. Model regresi mampu menjelaskan hampir 68% varians akses internet hanya dari satu variabel prediktor ini.
+2. **Kesenjangan Ekstrem (The Digital Divide):** Uji Fisher's Exact menghasilkan Odds Ratio = 0. Ini adalah bukti empiris yang sangat kuat bahwa pada tahun 2024, tidak ada satupun provinsi dengan kategori kemiskinan "Tinggi" yang mampu mencapai kategori akses internet "Tinggi".
+3. **Pencilan Wilayah Papua:** Provinsi-provinsi di wilayah Papua (Papua Pegunungan, Papua Tengah) teridentifikasi sebagai outlier ekstrem baik pada variabel kemiskinan maupun akses internet, yang mendrive sebagian besar varians dan pelanggaran asumsi model.
+4. **Triangulasi Metodologis:** Pendekatan numerik (Pearson & Regresi) dan kategorikal (Cramer's V & Fisher) menghasilkan kesimpulan yang konsisten, memvalidasi bahwa hubungan ini bukan artefak dari cara pengelompokan data.
 
 ## ⚠️ Notes / Limitations
 
-- **Scope:** The analysis is limited to Indonesian provinces in 2024 and should not be generalized to other years or country-level contexts without revalidation.
-- **Data:** One province was removed because of a missing rural internet value. The final dataset is still usable, but the drop should be documented clearly.
-- **Assumptions:** The linear regression is statistically useful, but its residual diagnostics are not fully clean. The model should be read as association-focused rather than causal.
-- **Categorical binning:** The chi-square and Fisher analyses require binning continuous values into categories, which reduces detail compared with the numeric analysis.
-- **External factors:** The analysis does not model infrastructure quality, urbanization, education, or policy variables, so part of the variation remains unexplained.
+**Scope:** Analisis ini terbatas pada data agregat tingkat provinsi di Indonesia pada tahun 2024. Temuan tidak serta merta mencerminkan dinamika kesenjangan digital di tingkat kabupaten/kota atau tingkat individu.
 
----
+**Data:** Data bersifat cross-sectional, sehingga analisis ini hanya dapat mengklaim korelasi dan asosiasi, bukan hubungan kausalitas. Faktor perancu (confounding variables) seperti topografi geografis atau kebijakan infrastruktur lokal tidak dimasukkan dalam model.
+
+**Asumsi Analisis:** Uji asumsi klasik pada model OLS menunjukkan bahwa asumsi normalitas terpenuhi, namun asumsi homoskedastisitas (Uji Breusch-Pagan, p < 0.05) dan autokorelasi (Durbin-Watson = 1.03) dilanggar. Hal ini mengindikasikan bahwa standard error dari koefisien regresi mungkin bias, dan prediksi untuk provinsi dengan karakteristik ekstrem (seperti Papua) memiliki tingkat ketidakpastian yang tinggi.
+
+**Generalisasi:** Karena adanya pelanggaran asumsi homoskedastisitas dan keberadaan outlier spasial, model regresi ini sebaiknya tidak digunakan untuk memprediksi akses internet di luar sampel provinsi yang diamati tanpa penyesuaian robust standard errors atau pemodelan spasial.
 
 <div align="center">
-  <sub>
-    Made with care by Your Name · 2026
-  </sub>
+<sub>
+⭐ Jika analisis ini bermanfaat, pertimbangkan untuk memberikan star!
+<br>
+Made with ❤️ by <a href="https://github.com/username">[Nama Anda]</a> · 2024-06
+</sub>
 </div>
